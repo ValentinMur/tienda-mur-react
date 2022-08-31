@@ -1,9 +1,10 @@
 import React from 'react'
 import Nike from "../../images/Nike.jpg";
-import './header.css'
+import { CartWidget } from '../CartWidget/CartWidget';
+import './NavBar.css'
 
 
-export const Header = () => {
+export const NavBar = () => {
     return (
         <header>
 
@@ -21,7 +22,7 @@ export const Header = () => {
                 </li>
             </ul>
             <div className='cart'>
-                <box-icon name='cart' size='lg'></box-icon>
+                {CartWidget()}
                 <span className='item__total'>0</span>
             </div>
         </header>
