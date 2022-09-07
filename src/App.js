@@ -1,20 +1,28 @@
 import React from "react";
 import { NavBar } from "./components/NavBar/NavBar";
-import { ProductosLista } from "../src/components/Productos/productos";
-import { ItemListContainer } from "../src/components/ItemListContainer/Greeting";
+
+
+import { BrowserRouter as Router } from "react-router-dom";
+import { Paginas } from "../src/components/Paginas";
+import { DataProvider } from "./context/Dataprovider";
 
 import 'boxicons';
+import { Carrito } from "./components/Carrito/Carrito";
 
 
 function App() {
   return (
-    <div className="App">
+    <DataProvider>
+      <div className="App">
+        <Router>
+          <NavBar />
+          <Carrito />
 
-      <NavBar />
-      <ItemListContainer greeting='hola soy un greeting' />
-      <ProductosLista />
+          <Paginas />
+        </Router>
 
-    </div>
+      </div>
+    </DataProvider>
   );
 }
 
