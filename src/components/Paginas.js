@@ -1,7 +1,7 @@
 import React from 'react'
 import { Route, Routes } from "react-router-dom";
 import { Inicio } from "./Inicio/Inicio";
-import { ProductosLista } from "./Productos/productos";
+import { ProductosLista } from "./ItemListContainer/Item";
 
 export const Paginas = () => {
     return (
