@@ -6,7 +6,8 @@ import { BrowserRouter as Router } from "react-router-dom";
 import { Paginas } from "../src/components/Paginas";
 import { DataProvider } from "./context/Dataprovider";
 
-import 'boxicons';
+import 'boxicons'
+
 import { Carrito } from "./components/Carrito/Carrito";
 
 

@@ -7,6 +7,7 @@ export const Carrito = () => {
     const value = useContext(DataContext)
     const [menu, setMenu] = value.menu
     const [carrito, setCarrito] = value.carrito;
+    const [total] = value.total
 
     const tooglefalse = () => {
         setMenu(false)
@@ -14,6 +15,37 @@ export const Carrito = () => {
 
     const show1 = menu ? 'carritos show' : 'carritos'
     const show2 = menu ? 'carrito show' : 'carrito'
+
+    const resta = id => {
+        carrito.forEach(item => {
+            if (item.id === id) {
+                item.cantidad === 1 ? item.cantidad = 1 : item.cantidad -= 1;
+            }
+            setCarrito([...carrito])
+        })
+    }
+
+    const suma = id => {
+        carrito.forEach(item => {
+            if (item.id === id) {
+                item.cantidad += 1;
+            }
+            setCarrito([...carrito])
+        })
+    }
+
+    const removeProducto = id => {
+        if (window.confirm('Queres cancelar el producto?')) {
+            carrito.forEach((item, index) => {
+                if (item.id === id) {
+                    item.cantidad = 1;
+                    carrito.splice(index, 1)
+                }
+            })
+            setCarrito([...carrito])
+        }
+
+    }
 
     return (
         <div className={show1}>
@@ -24,29 +56,34 @@ export const Carrito = () => {
                 <h2>Su carrito</h2>
                 <div className='carrito__center'>
                     {
-                        carrito.map((producto) => (
+                        carrito.length === 0 ? <h2 className="h2.carrito">Carrito Vacio</h2> : <>
+                            {
+                                carrito.map((producto) => (
 
 
 
-                            <div className='carrito__item'>
-                                <img src={producto.image} />
-                                <div>
-                                    <h3>{producto.title}</h3>
-                                    <p className="price">${producto.price}</p>
-                                </div>
-                                <div>
-                                    <box-icon name='up-arrow' type='solid'></box-icon>
-                                    <p className="cantidad">{producto.cantidad}</p>
-                                    <box-icon name='down-arrow' type='solid'></box-icon>
-                                </div>
-                                <div className="remove__item">
-                                    <box-icon name='trash'></box-icon>
-                                </div>
-                            </div>
-                        ))}
+                                    <div className='carrito__item' key={producto.id}>
+                                        <img src={producto.image} />
+                                        <div>
+                                            <h3>{producto.title}</h3>
+                                            <p className="price">${producto.price}</p>
+                                        </div>
+                                        <div>
+                                            <box-icon name='up-arrow' type='solid' onClick={() => suma(producto.id)}></box-icon>
+                                            <p className="cantidad">{producto.cantidad}</p>
+                                            <box-icon name='down-arrow' type='solid' onClick={() => resta(producto.id)}></box-icon>
+                                        </div>
+                                        <div className="remove__item" onClick={() => removeProducto(producto.id)}>
+                                            <box-icon name='trash'></box-icon>
+                                        </div>
+                                    </div>
+                                ))
+                            }
+                        </>
+                    }
                 </div>
                 <div className="carrito__footer">
-                    <h3>Total: $000</h3>
+                    <h3>Total: ${total}</h3>
                     <button className="btn">Payment</button>
                 </div>
             </div>

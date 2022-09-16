@@ -134,6 +134,12 @@
     color: white;
 }
 
+.h2.carrito {
+    text-align: center;
+    font-size: 3rem;
+
+}
+
 @media only screen and (max-width: 1000px) {
     .carrito__item {
         width: 92%;
