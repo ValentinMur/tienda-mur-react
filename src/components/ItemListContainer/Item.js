@@ -12,7 +12,7 @@ export const ProductosLista = () => {
 
     return (
         <>
-            <h1 className='title'>PRODUCTOS</h1>
+            <h1 className='title'>Products</h1>
             <div className='productos'>
                 {
                     productos.map(producto => (

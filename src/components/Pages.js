@@ -1,8 +1,8 @@
 import React from 'react'
 import { Route, Routes } from "react-router-dom";
-import { Inicio } from "./Inicio/Inicio";
+import { Inicio } from "./Index/Inicio";
 import { ProductosLista } from "./ItemListContainer/Item";
-import { ProductoDetalles } from "./ItemListContainer/ProductoDetalles";
+import { ProductoDetalles } from "./ItemDetailContainer/ProductoDetalles";
 
 export const Paginas = () => {
     return (

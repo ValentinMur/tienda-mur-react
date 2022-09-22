@@ -1,10 +1,10 @@
 import React from "react";
 import { NavBar } from "./components/NavBar/NavBar";
 import { BrowserRouter as Router } from "react-router-dom";
-import { Paginas } from "../src/components/Paginas";
+import { Paginas } from "../src/components/Pages";
 import { DataProvider } from "./context/Dataprovider";
 import 'boxicons'
-import { Carrito } from "./components/Carrito/Carrito";
+import { Carrito } from "./components/Cart/Carrito";
 
 
 function App() {

@@ -1,4 +1,4 @@
-import Card from "../../images/img03.jpg";
+
 import './carrito.css'
 import { DataContext } from "../../context/Dataprovider";
 import { useContext } from "react";
@@ -53,7 +53,7 @@ export const Carrito = () => {
                 <div className='carrito__close' onClick={tooglefalse}>
                     <box-icon name='x'></box-icon>
                 </div>
-                <h2>Su carrito</h2>
+                <h2>Cart</h2>
                 <div className='carrito__center'>
                     {
                         carrito.length === 0 ? <h2 className="h2.carrito">Carrito Vacio</h2> : <>

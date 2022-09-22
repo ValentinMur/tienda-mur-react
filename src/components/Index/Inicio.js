@@ -6,8 +6,8 @@ import './Inicio.css'
 export const Inicio = () => {
     return (
         <div className='inicio'>
-            <Link to='/'><h1 className='title-inicio'>Inicio</h1></Link>
-            <Link to='/Productos'><h1 className='title-inicio'>Productos</h1></Link>
+            <Link to='/'><h1 className='title-inicio'>Home</h1></Link>
+            <Link to='/Productos'><h1 className='title-inicio'>Shop</h1></Link>
             <img src={Portada} alt='inicio'></img>
         </div>
     )
