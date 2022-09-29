@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { DataContext } from "../../context/Dataprovider";
 import './productos.css';
 
+
 export const ProductoItem = ({ title, image, category, price, id }) => {
 
     const value = useContext(DataContext);

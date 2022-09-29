@@ -2,8 +2,10 @@ import React, { useContext, useEffect, useState } from 'react'
 import { DataContext } from "../../context/Dataprovider";
 import { useParams } from "react-router-dom";
 import { ProductoItem } from "../ItemListContainer/ItemList";
+import { getFirestore, doc, getDoc } from "firebase/firestore";
 
 export const ProductoDetalles = () => {
+
     const value = useContext(DataContext);
     const [productos] = value.productos;
     const addCarrito = value.addCarrito;
@@ -12,6 +14,13 @@ export const ProductoDetalles = () => {
     const [images, setImages] = useState('')
     const params = useParams();
     let item = 0;
+
+
+    const db = getFirestore()
+    const queryDoc = doc(db, 'item', 'A1wJrawt9WX4OBr1qVdy')
+    getDoc(queryDoc).then((res) => {
+        console.log(res.data)
+    })
 
     useEffect(() => {
         console.log('re render', params.id)
