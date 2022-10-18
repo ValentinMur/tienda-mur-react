@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import { DataContext } from "../../context/Dataprovider";
 import { useParams } from "react-router-dom";
 import { ProductoItem } from "../ItemListContainer/ItemList";
-import { getFirestore, doc, getDoc } from "firebase/firestore";
+import { getFirestore, getDocs, collection } from "firebase/firestore";
 
 export const ProductoDetalles = () => {
 
@@ -16,29 +16,24 @@ export const ProductoDetalles = () => {
     let item = 0;
 
 
-    const db = getFirestore()
-    const queryDoc = doc(db, 'item', 'A1wJrawt9WX4OBr1qVdy')
-    getDoc(queryDoc).then((res) => {
-        console.log(res.data)
-    })
+    const getProducts = () => {
+        const db = getFirestore()
+        const querySnaspshot = collection(db, 'items')
+        getDocs(querySnaspshot).then((response) => {
+            const data = response.docs.map((product) => {
+                console.log(product.data())
+                return { id: product.id }
+            })
+        })
+    }
+
 
     useEffect(() => {
-        console.log('re render', params.id)
-        item = 0;
-        productos.forEach(producto => {
-            if (producto.id === parseInt(params.id)) {
-                setDetalle(producto)
-                setUrl(0)
-            }
-        })
+        getProducts()
     }, [params.id, productos])
 
-    console.log(url)
 
-    useEffect(() => {
-        const values = `${detalle.img1}${url}${detalle.img2}`;
-        setImages(values)
-    }, [url, params.id])
+
 
     const handleInput = (e) => {
         const number = e.target.value.toString().padStart(2, '01')
